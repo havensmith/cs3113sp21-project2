@@ -20,14 +20,14 @@ struct MemoryBlock
 struct Memory
 {
     int size;
-    struct MemoryBlock blocks[10000];
+    struct MemoryBlock blocks[1000000];
 };
 
 char algorithim[10];
 int totalMemory;
 
 int instructionCount = 0;
-struct Instruction instructions[10000];
+struct Instruction instructions[1000000];
 
 struct Memory memory;
 
