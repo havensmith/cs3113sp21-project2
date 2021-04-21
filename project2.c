@@ -247,7 +247,7 @@ void runInstructions()
                 }
             }
             if(allocated == false) {
-                printf("FAIL REQUEST %s %d", instructions[i].ID, instructions[i].size);
+                printf("FAIL REQUEST %s %d\n", instructions[i].ID, instructions[i].size);
             }
         }
         else if (strcmp(instructions[i].command, "RELEASE") == 0) // "release" command
@@ -271,7 +271,7 @@ void runInstructions()
             }
             if (found == false)
             {
-                printf("FAIL RELEASE %s", instructions[i].ID);
+                printf("FAIL RELEASE %s\n", instructions[i].ID);
             }
             else
             {
