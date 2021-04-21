@@ -246,6 +246,9 @@ void runInstructions()
                     }
                 }
             }
+            if(allocated == false) {
+                printf("FAIL REQUEST %s %d", instructions[i].ID, instructions[i].size);
+            }
         }
         else if (strcmp(instructions[i].command, "RELEASE") == 0) // "release" command
         {
@@ -266,8 +269,16 @@ void runInstructions()
                 }
                 consolidate(); //combine empty memory
             }
-            printf("FREE %s %d %d\n", instructions[i].ID, freedMemory, memoryLocation);
+            if (found == false)
+            {
+                printf("FAIL RELEASE %s", instructions[i].ID);
+            }
+            else
+            {
+                printf("FREE %s %d %d\n", instructions[i].ID, freedMemory, memoryLocation);
+            }
         }
+
         else if (strcmp(instructions[i].command, "LIST") == 0) // "list" command
         {
             if (strcmp(instructions[i].subcommand, "AVAILABLE") == 0) // "list available"
