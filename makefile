@@ -3,4 +3,4 @@ all: project2.c
 clean:
 	rm project2
 run:
-	./project2 NEXTFIT 268435456 testscript.txt
+	./project2 FIRSTFIT 268435456 testscript.txt

@@ -141,10 +141,6 @@ void runInstructions()
                         printf("ALLOCATED %s %d\n", instructions[i].ID, memoryLocation);
                     }
                 }
-                if (allocated == false)
-                {
-                    printf("FAIL REQUEST %s %d\n", instructions[i].ID, instructions[i].size);
-                }
             }
             else if (strcmp(algorithim, "BESTFIT") == 0)
             {
@@ -278,7 +274,6 @@ void runInstructions()
                 printf("FREE %s %d %d\n", instructions[i].ID, freedMemory, memoryLocation);
             }
         }
-
         else if (strcmp(instructions[i].command, "LIST") == 0) // "list" command
         {
             if (strcmp(instructions[i].subcommand, "AVAILABLE") == 0) // "list available"
