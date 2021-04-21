@@ -1,0 +1,2 @@
+Stackoverflow | https://stackoverflow.com/questions/19323113/how-do-i-scan-a-file-in-c-using-fscanf | using fscanf to iterate through files
+Fresh2Refresh | https://fresh2refresh.com/c-programming/c-nested-structure/ | nested structures
