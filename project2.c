@@ -220,7 +220,7 @@ void runInstructions()
             {
                 for (int j = nextFitIndex; (j < memory.size + nextFitIndex) && allocated == false; j++) //traverse
                 {
-                    int index = j % memory.size; // modulus to loop array
+                    int index = j % memory.size;                                                                            // modulus to loop array
                     if (strcmp(memory.blocks[index].ID, "EMPTY") == 0 && memory.blocks[index].size >= instructions[i].size) //search for acceptable fits
                     {
                         //insert memory block before empty space
@@ -245,7 +245,6 @@ void runInstructions()
                         printf("ALLOCATED %s %d\n", instructions[i].ID, memoryLocation);
                     }
                 }
-                
             }
         }
         else if (strcmp(instructions[i].command, "RELEASE") == 0) // "release" command
