@@ -35,14 +35,14 @@ void loadInstructions(FILE *file)
 {
     struct Instruction instruction;
     char string[10];
-    char buffer[100];
 
     while (fscanf(file, "%s", string) != EOF)
     {
         strcpy(instruction.command, string);
-        if (instruction.command[0] == '#') //skip comments in input
+        if (strcmp(instruction.command, "#") == 0) //skip comments in input
         {
-            fgets(buffer, 100, file);
+            fscanf(file, "%*[^\n]");
+
         }
         else if (strcmp(instruction.command, "REQUEST") == 0)
         {
