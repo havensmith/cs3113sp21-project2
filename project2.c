@@ -225,7 +225,6 @@ void runInstructions()
                 for (int j = nextFitIndex; (j < memory.size + nextFitIndex) && allocated == false; j++) //traverse
                 {
                     int index = j % memory.size; // modulus to loop array
-                    if(index != 0){index -= 1;}
                     if (strcmp(memory.blocks[index].ID, "EMPTY") == 0 && (memory.blocks[index].size >= instructions[i].size)) //search for acceptable fits
                     {
                         //insert memory block before empty space
