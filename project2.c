@@ -279,14 +279,20 @@ void runInstructions()
         {
             if (strcmp(instructions[i].subcommand, "AVAILABLE") == 0) // "list available"
             {
+                bool full = true;
                 int memoryLocation = 0;
                 for (int j = 0; j < memory.size; j++) //traverse memory
                 {
                     if (strcmp(memory.blocks[j].ID, "EMPTY") == 0) //look for unallocated memory
                     {
+                        full = false;
                         printf("(%d, %d) ", memory.blocks[j].size, memoryLocation);
                     }
                     memoryLocation += memory.blocks[j].size; //keep track of location
+                }
+                if(full == true)
+                {
+                    printf("FULL");
                 }
                 printf("\n");
             }
