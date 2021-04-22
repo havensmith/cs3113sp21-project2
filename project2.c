@@ -42,7 +42,6 @@ void loadInstructions(FILE *file)
         if (strcmp(instruction.command, "#") == 0) //skip comments in input
         {
             fscanf(file, "%*[^\n]");
-
         }
         else if (strcmp(instruction.command, "REQUEST") == 0)
         {
@@ -97,7 +96,7 @@ void consolidate() //method to join empty space
                     strcpy(memory.blocks[j].ID, memory.blocks[j + 1].ID);
                     memory.blocks[j].size = memory.blocks[j + 1].size;
                 }
-                memory.size --;
+                memory.size--;
             }
         }
     }
@@ -145,7 +144,7 @@ void runInstructions()
             }
             else if (strcmp(algorithim, "BESTFIT") == 0)
             {
-                int bestSize = 2147483647; //largest possible integer value
+                int bestSize = 2000000000; //largest possible integer value
                 int bestIndex;
                 for (int j = 0; j < memory.size; j++)
                 {
@@ -153,30 +152,34 @@ void runInstructions()
                     {
                         if (memory.blocks[j].size < bestSize) // keep track of best fit
                         {
+                            allocated = true;
                             bestSize = memory.blocks[j].size;
                             bestIndex = j;
                         }
                     }
                 }
-                //insert memory block before empty space
-                for (int k = memory.size - 1; k >= bestIndex; k--)
+                if (allocated == true)
                 {
-                    strcpy(memory.blocks[k + 1].ID, memory.blocks[k].ID);
-                    memory.blocks[k + 1].size = memory.blocks[k].size;
-                }
-                strcpy(memory.blocks[bestIndex].ID, instructions[i].ID);
-                memory.blocks[bestIndex].size = instructions[i].size;
-                memory.size++;
+                    //insert memory block before empty space
+                    for (int k = memory.size - 1; k >= bestIndex; k--)
+                    {
+                        strcpy(memory.blocks[k + 1].ID, memory.blocks[k].ID);
+                        memory.blocks[k + 1].size = memory.blocks[k].size;
+                    }
+                    strcpy(memory.blocks[bestIndex].ID, instructions[i].ID);
+                    memory.blocks[bestIndex].size = instructions[i].size;
+                    memory.size++;
 
-                //shrink empty space
-                memory.blocks[bestIndex + 1].size -= instructions[i].size;
-                allocated = true;
-                int memoryLocation = 0;
-                for (int k = 0; k < bestIndex; k++)
-                {
-                    memoryLocation += memory.blocks[k].size;
+                    //shrink empty space
+                    memory.blocks[bestIndex + 1].size -= instructions[i].size;
+                    allocated = true;
+                    int memoryLocation = 0;
+                    for (int k = 0; k < bestIndex; k++)
+                    {
+                        memoryLocation += memory.blocks[k].size;
+                    }
+                    printf("ALLOCATED %s %d\n", instructions[i].ID, memoryLocation);
                 }
-                printf("ALLOCATED %s %d\n", instructions[i].ID, memoryLocation);
             }
             else if (strcmp(algorithim, "WORSTFIT") == 0)
             {
@@ -186,6 +189,7 @@ void runInstructions()
                 {
                     if (strcmp(memory.blocks[j].ID, "EMPTY") == 0 && memory.blocks[j].size >= instructions[i].size) //find acceptable fits
                     {
+                        allocated = true;
                         if (memory.blocks[j].size > bestSize)
                         {
                             bestSize = memory.blocks[j].size;
@@ -193,25 +197,28 @@ void runInstructions()
                         }
                     }
                 }
-                //insert memory block before empty space
-                for (int k = memory.size - 1; k >= bestIndex; k--)
+                if (allocated == true)
                 {
-                    strcpy(memory.blocks[k + 1].ID, memory.blocks[k].ID);
-                    memory.blocks[k + 1].size = memory.blocks[k].size;
-                }
-                strcpy(memory.blocks[bestIndex].ID, instructions[i].ID);
-                memory.blocks[bestIndex].size = instructions[i].size;
-                memory.size++;
+                    //insert memory block before empty space
+                    for (int k = memory.size - 1; k >= bestIndex; k--)
+                    {
+                        strcpy(memory.blocks[k + 1].ID, memory.blocks[k].ID);
+                        memory.blocks[k + 1].size = memory.blocks[k].size;
+                    }
+                    strcpy(memory.blocks[bestIndex].ID, instructions[i].ID);
+                    memory.blocks[bestIndex].size = instructions[i].size;
+                    memory.size++;
 
-                //shrink empty space
-                memory.blocks[bestIndex + 1].size -= instructions[i].size;
-                allocated = true;
-                int memoryLocation = 0;
-                for (int k = 0; k < bestIndex; k++)
-                {
-                    memoryLocation += memory.blocks[k].size;
+                    //shrink empty space
+                    memory.blocks[bestIndex + 1].size -= instructions[i].size;
+                    allocated = true;
+                    int memoryLocation = 0;
+                    for (int k = 0; k < bestIndex; k++)
+                    {
+                        memoryLocation += memory.blocks[k].size;
+                    }
+                    printf("ALLOCATED %s %d\n", instructions[i].ID, memoryLocation);
                 }
-                printf("ALLOCATED %s %d\n", instructions[i].ID, memoryLocation);
             }
             else if (strcmp(algorithim, "NEXTFIT") == 0)
             {
@@ -243,7 +250,8 @@ void runInstructions()
                     }
                 }
             }
-            if(allocated == false) {
+            if (allocated == false)
+            {
                 printf("FAIL REQUEST %s %d\n", instructions[i].ID, instructions[i].size);
             }
         }
@@ -291,7 +299,7 @@ void runInstructions()
                     }
                     memoryLocation += memory.blocks[j].size; //keep track of location
                 }
-                if(full == true)
+                if (full == true)
                 {
                     printf("FULL");
                 }
@@ -310,7 +318,8 @@ void runInstructions()
                     }
                     memoryLocation += memory.blocks[j].size; //track location
                 }
-                if(none == true){
+                if (none == true)
+                {
                     printf("NONE");
                 }
                 printf("\n");
