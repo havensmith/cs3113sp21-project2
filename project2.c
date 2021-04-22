@@ -266,6 +266,7 @@ void runInstructions()
                 }
                 consolidate(); //combine empty memory
             }
+
             if (found == false)
             {
                 printf("FAIL RELEASE %s\n", instructions[i].ID);
@@ -298,14 +299,19 @@ void runInstructions()
             }
             if (strcmp(instructions[i].subcommand, "ASSIGNED") == 0) // "list assigned"
             {
+                bool none = true;
                 int memoryLocation = 0;
                 for (int j = 0; j < memory.size; j++) //traverse
                 {
                     if (strcmp(memory.blocks[j].ID, "EMPTY") != 0) //look for unassigned (nonempty)
                     {
+                        none = false;
                         printf("(%s, %d, %d) ", memory.blocks[j].ID, memory.blocks[j].size, memoryLocation);
                     }
                     memoryLocation += memory.blocks[j].size; //track location
+                }
+                if(none == true){
+                    printf("NONE");
                 }
                 printf("\n");
             }
