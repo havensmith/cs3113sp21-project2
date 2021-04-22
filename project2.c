@@ -97,6 +97,7 @@ void consolidate() //method to join empty space
                     strcpy(memory.blocks[j].ID, memory.blocks[j + 1].ID);
                     memory.blocks[j].size = memory.blocks[j + 1].size;
                 }
+                memory.size --;
             }
         }
     }
@@ -322,6 +323,8 @@ void runInstructions()
             }
             printf("\n");
         }
+        // printBlocks();
+        // printf("\n");
     }
 }
 
