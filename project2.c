@@ -40,7 +40,7 @@ void loadInstructions(FILE *file)
     while (fscanf(file, "%s", string) != EOF)
     {
         strcpy(instruction.command, string);
-        if (strcmp(instruction.command, "#") == 0) //skip comments in input
+        if (instruction.command[0] == '#') //skip comments in input
         {
             fgets(buffer, 100, file);
         }
