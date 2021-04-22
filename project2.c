@@ -245,7 +245,7 @@ void runInstructions()
                         {
                             memoryLocation += memory.blocks[k].size;
                         }
-                        nextFitIndex = index;
+                        nextFitIndex = index + 1;
                         printf("ALLOCATED %s %d\n", instructions[i].ID, memoryLocation);
                     }
                 }
