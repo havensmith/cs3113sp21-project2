@@ -3,4 +3,4 @@ all: project2.c
 clean:
 	rm project2
 run:
-	./project2 FIRSTFIT 16 testscript.txt
+	./project2 FIRSTFIT 1024 testscript.txt

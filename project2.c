@@ -284,7 +284,7 @@ void runInstructions()
                 int memoryLocation = 0;
                 for (int j = 0; j < memory.size; j++) //traverse memory
                 {
-                    if (strcmp(memory.blocks[j].ID, "EMPTY") == 0) //look for unallocated memory
+                    if (strcmp(memory.blocks[j].ID, "EMPTY") == 0 && memory.blocks[j].size != 0) //look for unallocated memory
                     {
                         full = false;
                         printf("(%d, %d) ", memory.blocks[j].size, memoryLocation);
