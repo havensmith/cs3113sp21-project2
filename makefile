@@ -1,5 +1,5 @@
 all: project2.c
-	gcc -o project2 project2.c
+	gcc -o project2 printout.c
 clean:
 	rm project2
 run:
