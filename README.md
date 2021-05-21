@@ -11,7 +11,7 @@ Haven Smith<br/>
 ## Structure
 The program uses a structure called "memory" which is comprised of "memory blocks". consecutive empty memory blocks are combined together using an array deletion algorithim, and an array insertion algorithim is used to create new blocks at specific locations.
 ## File Format
-![commands](/images/commands.png)
+![Commands](/images/commands.png)
 ### Example
-![commands](/images/example.png)
-![commands](/images/exampleout.png)
+![Example](/images/example.png)
+![ExampleOut](/images/exampleout.png)
