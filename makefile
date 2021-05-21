@@ -1,6 +1,6 @@
-all: project2.c
-	gcc -o project2 project2.c
+all: manager.c
+	gcc -o manager manager.c
 clean:
-	rm project2
+	rm manager
 run:
-	./project2 FIRSTFIT 1024 testscript.txt
+	./manager NEXTFIT 268435456 testscript.txt
